@@ -9,18 +9,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-/*
-*{
-  "id": "19ec8e92-e6a7-49af-90ef-81c248db08af",
-  "name": "sdffdsa",
-  "userName": "sadfasdfasdfasf",
-  "email": "moh.ash5ggfffff918@gmail.com",
-  "nationalId": "42341234123421",
-  "birthDate": "22/07/1999",
-  "phoneNumber": "01211236779",
-  "image": "http://res.cloudinary.com/dtfziggtc/image/upload/v1720370353/bensi0g0bf4wjx0615qv.jpg"
-}
- */
 export class ProfileComponent implements OnInit {
   selectedFile: File | null = null;
   uploadMessage: string = '';
@@ -30,6 +18,7 @@ export class ProfileComponent implements OnInit {
   customerData: any = null;
 
   constructor(private uploadService: UploadService) {}
+
   ngOnInit(): void {
     this.uploadService.getCustomerInfo().subscribe({
       next: (response) => {
@@ -38,7 +27,6 @@ export class ProfileComponent implements OnInit {
       error: (error) => {
         this.uploadMessage = 'Failed to get customer info: ' + error.message;
       },
-      complete: () => {},
     });
   }
 

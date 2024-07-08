@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../../core/services/authantication.service';
+
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -41,5 +42,11 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  navigateToEditProfile(): void {
+    if (this.userData && this.userData.id) {
+      this.router.navigate([`/profile/edit/${this.userData.id}`]);
+    }
   }
 }
